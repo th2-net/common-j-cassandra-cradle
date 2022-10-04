@@ -27,7 +27,6 @@ import com.exactpro.th2.common.ConfigurationProvider;
 import com.exactpro.th2.common.ModuleFactory;
 import com.exactpro.th2.common.schema.configuration.Configuration;
 import com.google.auto.service.AutoService;
-import kotlin.collections.SetsKt;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,13 +43,12 @@ public class CradleManagerFactoryImpl implements ModuleFactory {
 
     @Override
     public Set<Class<?>> getModuleClasses() {
-        return SetsKt.setOf(CradleManager.class);
+        return Set.of(CradleManager.class);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public Set<Class<? extends Configuration>> getConfigurationClasses() {
-        return SetsKt.setOf(CradleConfidentialConfiguration.class, CradleNonConfidentialConfiguration.class);
+        return Set.of(CradleConfidentialConfiguration.class, CradleNonConfidentialConfiguration.class);
     }
 
     @Override
