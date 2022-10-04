@@ -1,6 +1,5 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.21'
-    id 'java'
     id 'java-library'
     id 'maven-publish'
     id "io.github.gradle-nexus.publish-plugin" version "1.0.0"
@@ -152,7 +151,7 @@ dependencies {
     annotationProcessor 'com.google.auto.service:auto-service:1.0.1'
     compileOnly 'com.google.auto.service:auto-service:1.0.1'
 
-    implementation "com.exactpro.th2:common-api-j:0.1-th2-1436-init-3174382441-fc6a0b0-SNAPSHOT"
+    implementation "com.exactpro.th2:common-api-j:0.0.1-th2-1436-init-3180908004-e67b670-SNAPSHOT"
 
     implementation "com.fasterxml.jackson.core:jackson-annotations"
     implementation ("com.exactpro.th2:cradle-cassandra:${cradleVersion}")

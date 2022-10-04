@@ -25,6 +25,7 @@ import com.exactpro.th2.CradleConfidentialConfiguration;
 import com.exactpro.th2.CradleNonConfidentialConfiguration;
 import com.exactpro.th2.common.ConfigurationProvider;
 import com.exactpro.th2.common.ModuleFactory;
+import com.exactpro.th2.common.schema.configuration.Configuration;
 import com.google.auto.service.AutoService;
 import kotlin.collections.SetsKt;
 import org.apache.commons.lang3.StringUtils;
@@ -47,7 +48,8 @@ public class CradleManagerFactoryImpl implements ModuleFactory {
     }
 
     @Override
-    public Set<Class<?>> getConfigurationClasses() {
+    @SuppressWarnings("unchecked")
+    public Set<Class<? extends Configuration>> getConfigurationClasses() {
         return SetsKt.hashSetOf(CradleConfidentialConfiguration.class, CradleNonConfidentialConfiguration.class);
     }
 
@@ -63,7 +65,7 @@ public class CradleManagerFactoryImpl implements ModuleFactory {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <C> C loadConfiguration(ConfigurationProvider configurationProvider, Class<C> aClass) {
+    public <C extends Configuration> C loadConfiguration(ConfigurationProvider configurationProvider, Class<C> aClass) {
         if (aClass.equals(CradleConfidentialConfiguration.class)) {
             return (C) configurationProvider.loadConfiguration(CRADLE_CONFIDENTIAL_ID, CradleConfidentialConfiguration.class);
         } else if (aClass.equals(CradleNonConfidentialConfiguration.class)) {
