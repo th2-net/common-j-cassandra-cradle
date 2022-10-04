@@ -39,18 +39,18 @@ import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 public class CradleManagerFactoryImpl implements ModuleFactory {
 
     protected static final String DEFAULT_CRADLE_INSTANCE_NAME = "infra";
-    private final String CRADLE_CONFIDENTIAL_ID = "cradle_confidential";
-    private final String CRADLE_NON_CONFIDENTIAL_ID = "cradle_non_confidential";
+    private static final String CRADLE_CONFIDENTIAL_ID = "cradle_confidential";
+    private static final String CRADLE_NON_CONFIDENTIAL_ID = "cradle_non_confidential";
 
     @Override
     public Set<Class<?>> getModuleClasses() {
-        return SetsKt.hashSetOf(CradleManager.class);
+        return SetsKt.setOf(CradleManager.class);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Set<Class<? extends Configuration>> getConfigurationClasses() {
-        return SetsKt.hashSetOf(CradleConfidentialConfiguration.class, CradleNonConfidentialConfiguration.class);
+        return SetsKt.setOf(CradleConfidentialConfiguration.class, CradleNonConfidentialConfiguration.class);
     }
 
     @Override
